@@ -1,0 +1,12 @@
+/* Box组件基础样式 */
+.tomato-box {
+  /* 默认为块级元素 */
+  box-sizing: border-box;
+}
+
+/* 确保所有子元素也使用border-box */
+.tomato-box *,
+.tomato-box *::before,
+.tomato-box *::after {
+  box-sizing: inherit;
+}
