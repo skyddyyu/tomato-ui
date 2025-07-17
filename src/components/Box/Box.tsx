@@ -79,11 +79,18 @@ interface SxProps {
   transition?: string;
   cursor?: string;
 
-  // 伪类选择器支持
-  "&:hover"?: SxProps;
-  "&:focus"?: SxProps;
-  "&:active"?: SxProps;
-  "&:disabled"?: SxProps;
+  // 伪类选择器支持   这里没法支持伪类选择器 只能支持普通选择器
+  // 因为伪类选择器无法在内联的style样式中应用，只能在类中应用
+  /*
+    因此需要CSS-in-JS库
+    - 为每个包含伪类选择器的sx对象生成唯一的CSS类
+    - 将CSS规则注入到 <style> 标签中
+    - 将生成的类名应用到组件上
+   */
+  // "&:hover"?: SxProps;
+  // "&:focus"?: SxProps;
+  // "&:active"?: SxProps;
+  // "&:disabled"?: SxProps;
 
   // 允许任意 CSS 属性
   [key: string]: string | number | undefined | SxProps;
