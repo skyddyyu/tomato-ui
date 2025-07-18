@@ -1,5 +1,4 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
-import React from "react";
 import { Box } from "../components/Box";
 
 const meta = {
@@ -358,6 +357,128 @@ export const AbsolutePositioning: Story = {
       </Box>
     </Box>
   ),
+};
+
+// 伪类选择器示例
+export const PseudoClassSelectors: Story = {
+  args: {
+    children: "Hover me! (伪类选择器示例)",
+    sx: {
+      p: 3,
+      backgroundColor: "#e3f2fd",
+      border: "2px solid #2196f3",
+      borderRadius: 8,
+      cursor: "pointer",
+      transition: "all 0.3s ease",
+      textAlign: "center",
+      fontWeight: "bold",
+      "&:hover": {
+        backgroundColor: "pink",
+        color: "white",
+        transform: "scale(1.05)",
+        boxShadow: "0 4px 12px pink",
+      },
+      "&:active": {
+        transform: "scale(0.98)",
+      },
+    },
+    width: 250,
+  },
+};
+
+// 复杂伪类选择器示例
+export const ComplexPseudoSelectors: Story = {
+  render: (args) => (
+    <Box {...args}>
+      {["First Item", "Second Item", "Third Item", "Fourth Item"].map(
+        (item, index) => (
+          <Box
+            key={index}
+            sx={{
+              p: 2,
+              m: 1,
+              backgroundColor: "#f5f5f5",
+              border: "1px solid #ddd",
+              borderRadius: 4,
+              cursor: "pointer",
+              transition: "all 0.2s ease",
+              "&:first-child": {
+                backgroundColor: "#e8f5e8",
+                borderColor: "#4caf50",
+              },
+              "&:last-child": {
+                backgroundColor: "#fff3e0",
+                borderColor: "#ff9800",
+              },
+              "&:nth-child(even)": {
+                backgroundColor: "#f3e5f5",
+                borderColor: "#9c27b0",
+              },
+              "&:hover": {
+                transform: "translateY(-2px)",
+                boxShadow: "0 2px 8px rgba(0,0,0,0.1)",
+              },
+            }}
+          >
+            {item}
+          </Box>
+        )
+      )}
+    </Box>
+  ),
+  args: {
+    sx: {
+      display: "flex",
+      flexDirection: "column",
+      gap: 0,
+      p: 2,
+      border: "2px solid #666",
+      borderRadius: 8,
+      backgroundColor: "#fafafa",
+    },
+    width: 300,
+  },
+};
+
+// 嵌套伪类选择器示例
+export const NestedPseudoSelectors: Story = {
+  args: {
+    children: "Focus me! (嵌套伪类示例)",
+    component: "button",
+    sx: {
+      p: 3,
+      backgroundColor: "#fff",
+      border: "2px solid #007bff",
+      borderRadius: 8,
+      cursor: "pointer",
+      fontSize: 16,
+      fontWeight: "bold",
+      color: "#007bff",
+      transition: "all 0.3s ease",
+      "&:hover": {
+        backgroundColor: "#007bff",
+        color: "white",
+        "&:focus": {
+          outline: "none",
+          boxShadow: "0 0 0 3px rgba(0, 123, 255, 0.25)",
+        },
+      },
+      "&:focus": {
+        outline: "none",
+        boxShadow: "0 0 0 3px rgba(0, 123, 255, 0.25)",
+      },
+      "&:active": {
+        transform: "scale(0.95)",
+      },
+      "&:disabled": {
+        backgroundColor: "#f8f9fa",
+        color: "#6c757d",
+        borderColor: "#dee2e6",
+        cursor: "not-allowed",
+      },
+    },
+    width: 200,
+  },
 };
 
 // HelloBox示例
